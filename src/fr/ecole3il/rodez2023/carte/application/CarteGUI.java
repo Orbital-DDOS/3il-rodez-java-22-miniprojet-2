@@ -1,5 +1,22 @@
 package fr.ecole3il.rodez2023.carte.application;
 
+import fr.ecole3il.rodez2023.carte.elements.Carte;
+import fr.ecole3il.rodez2023.carte.elements.Case;
+import fr.ecole3il.rodez2023.carte.elements.Chemin;
+import fr.ecole3il.rodez2023.carte.elements.Tuile;
+import fr.ecole3il.rodez2023.carte.chemin.algorithmes.AlgorithmeAEtoile;
+import fr.ecole3il.rodez2023.carte.chemin.algorithmes.AlgorithmeChemin;
+import fr.ecole3il.rodez2023.carte.chemin.algorithmes.AlgorithmeDijkstra;
+import fr.ecole3il.rodez2023.carte.manipulateurs.GenerateurCarte;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+
 /**
  * @author p.roquart
  * voilà
@@ -18,7 +35,7 @@ public class CarteGUI extends JFrame {
 		this.carte = carte;
 		this.caseDepart = null;
 		this.caseArrivee = null;
-		this.algorithme = new AlgorithmeDijkstra(); // Algorithme par défaut
+		this.algorithme = (AlgorithmeChemin) new AlgorithmeDijkstra(); // Algorithme par défaut
 
 		setTitle("Carte");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,9 +57,9 @@ public class CarteGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String choix = (String) algorithmeComboBox.getSelectedItem();
 				if (choix.equals("Dijkstra")) {
-					algorithme = new AlgorithmeDijkstra();
+					algorithme = (AlgorithmeChemin) new AlgorithmeDijkstra();
 				} else if (choix.equals("A*")) {
-					algorithme = new AlgorithmeAEtoile();
+					algorithme = (AlgorithmeChemin) new AlgorithmeAEtoile();
 				}
 			}
 		});

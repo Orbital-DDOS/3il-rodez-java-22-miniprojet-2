@@ -20,7 +20,7 @@ public class ExempleCLI {
 	public static void main(String[] args) {
 		GenerateurCarte generateur = new GenerateurCarte();
 		Carte test = generateur.genererCarte(100,100);
-		AlgorithmeChemin algoChemin = new AlgorithmeDijkstra();
+		AlgorithmeChemin algoChemin = (AlgorithmeChemin) new AlgorithmeDijkstra();
 		Chemin chemin = algoChemin.trouverChemin(test, 0, 0, 50, 50);
 		chemin.afficherChemin();
 		chemin = algoChemin.trouverChemin(test, 0, 0, 50, 50);
